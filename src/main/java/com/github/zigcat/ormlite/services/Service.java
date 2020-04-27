@@ -14,7 +14,7 @@ public class Service<T extends Modelable> {
         return dao.queryForAll();
     }
 
-    protected T getById(Dao<T, Integer> dao, int id) throws SQLException{
+    public T getById(Dao<T, Integer> dao, int id) throws SQLException{
         for(T t: listAll(dao)){
             if(t.getId() == id){
                 return t;

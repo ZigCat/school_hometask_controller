@@ -1,5 +1,7 @@
 package com.github.zigcat;
 
+import com.github.zigcat.ormlite.models.Form;
+import com.github.zigcat.ormlite.models.School;
 import com.github.zigcat.ormlite.models.User;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -16,6 +18,8 @@ public class DatabaseConfiguration {
         try {
             source = new JdbcPooledConnectionSource(DB_URL, DB_LOGIN, DB_PASSWORD);
             TableUtils.createTableIfNotExists(source, User.class);
+            TableUtils.createTableIfNotExists(source, Form.class);
+            TableUtils.createTableIfNotExists(source, School.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }

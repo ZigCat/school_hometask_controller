@@ -5,29 +5,29 @@ import com.github.zigcat.ormlite.controllers.Control;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "school")
-public class School implements Modelable {
+@DatabaseTable(tableName = "class")
+public class Form implements Modelable {
     @DatabaseField(generatedId = true)
     private int id;
 
     @DatabaseField
-    private String name;
+    private String number;
 
     @DatabaseField
-    private String level;
+    private String liter;
 
     @DatabaseField
     private String direction;
 
-    public static Control<School> schoolControl = new Control<>(School.class);
+    public static Control<Form> formControl = new Control<>(Form.class);
 
-    public School() {
+    public Form() {
     }
 
-    public School(int id, String name, String level, String direction) {
+    public Form(int id, String number, String liter, String direction) {
         this.id = id;
-        this.name = name;
-        this.level = level;
+        this.number = number;
+        this.liter = liter;
         this.direction = direction;
     }
 
@@ -40,19 +40,19 @@ public class School implements Modelable {
     }
 
     public String getName() {
-        return name;
+        return number;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getSubparam() {
-        return level;
+        return liter;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setLiter(String liter) {
+        this.liter = liter;
     }
 
     public String getDirection() {
@@ -61,15 +61,5 @@ public class School implements Modelable {
 
     public void setDirection(String direction) {
         this.direction = direction;
-    }
-
-    @Override
-    public String toString() {
-        return "School{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", level='" + level + '\'' +
-                ", direction='" + direction + '\'' +
-                '}';
     }
 }

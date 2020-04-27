@@ -36,7 +36,7 @@ public class User implements Modelable {
     private School school;
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
-    private Class form;
+    private Form form;
 
     @DatabaseField
     private boolean isAccepted;
@@ -44,7 +44,23 @@ public class User implements Modelable {
     public static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("YYYY MM dd");
     public static Control<User> userControl = new Control<>(User.class);
 
-    public User(int id, String name, String surname, String email, String password, Role role, LocalDate birth, School school, Class form, boolean isAccepted) {
+    public User() {
+    }
+
+    public User(int id, String name, String surname, String email, String password, Role role, String birthday, School school, Form form, boolean isAccepted) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.birthday = birthday;
+        this.school = school;
+        this.form = form;
+        this.isAccepted = isAccepted;
+    }
+
+    public User(int id, String name, String surname, String email, String password, Role role, LocalDate birth, School school, Form form, boolean isAccepted) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -57,7 +73,7 @@ public class User implements Modelable {
         this.isAccepted = isAccepted;
     }
 
-    public User(int id, String name, String surname, String email, String password, Role role, String birthday, boolean isAccepted) {
+    public User(int id, String name, String surname, String email, String password, Role role, String birthday) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -65,7 +81,7 @@ public class User implements Modelable {
         this.password = password;
         this.role = role;
         this.birthday = birthday;
-        this.isAccepted = isAccepted;
+        this.isAccepted = false;
     }
 
     public int getId() {
@@ -80,7 +96,7 @@ public class User implements Modelable {
         this.name = name;
     }
 
-    public String getSurname() {
+    public String getSubparam() {
         return surname;
     }
 
@@ -128,11 +144,11 @@ public class User implements Modelable {
         this.school = school;
     }
 
-    public Class getForm() {
+    public Form getForm() {
         return form;
     }
 
-    public void setForm(Class form) {
+    public void setForm(Form form) {
         this.form = form;
     }
 

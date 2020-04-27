@@ -1,6 +1,7 @@
 package com.github.zigcat.ormlite.services;
 
 import com.github.zigcat.ormlite.models.User;
+import org.apache.commons.validator.routines.EmailValidator;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.SQLException;
@@ -18,5 +19,18 @@ public class Security {
             }
         }
         return null;
+    }
+
+    public static boolean isCorrectDate(String date){
+        return date.length() == 10 && date.charAt(4) == ' ' && date.charAt(7) == ' ';
+    }
+
+    public static boolean isValidEmail(String email){
+        email = email.trim();
+        EmailValidator emailValidator = EmailValidator.getInstance();
+        if(emailValidator.isValid(email)){
+            return true;
+        }
+        return false;
     }
 }
